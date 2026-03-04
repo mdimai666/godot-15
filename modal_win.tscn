@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://cla0iwe6iqat8"]
+
+[ext_resource type="Texture2D" uid="uid://bt4e866s1qao3" path="res://img/win_modal.png" id="1_g4gc5"]
+[ext_resource type="Script" uid="uid://cxprn5f76006y" path="res://ModalWin.cs" id="1_gwgkw"]
+[ext_resource type="Texture2D" uid="uid://boj7ln5uqrn14" path="res://img/btn_green2.png" id="2_7skg7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gwgkw"]
+texture = ExtResource("2_7skg7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7skg7"]
+texture = ExtResource("2_7skg7")
+modulate_color = Color(0.8186959, 0.7883107, 0.8333841, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fsmc8"]
+texture = ExtResource("2_7skg7")
+modulate_color = Color(1.0416296, 1.0416296, 1.0416296, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7skg7"]
+load_path = "res://.godot/imported/btn_green2.png-990183a89e5ca53c0a3750ebf922f4c4.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rlxa8"]
+texture = SubResource("CompressedTexture2D_7skg7")
+modulate_color = Color(0.39287266, 0.39287263, 0.39287263, 1)
+
+[node name="ModalWin" type="Control" unique_id=825195000]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gwgkw")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1402508138]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101960786, 0.101960786, 0.101960786, 0.84313726)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=1729574385]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = -642.0
+offset_right = 435.5
+offset_bottom = 518.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_g4gc5")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="ColorRect/TextureRect" unique_id=1515349250]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -181.75
+offset_top = -212.5
+offset_right = 163.96777
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_gwgkw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7skg7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fsmc8")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_rlxa8")
+theme_override_styles/focus = SubResource("StyleBoxTexture_fsmc8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/TextureRect" unique_id=159216519]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -341.25
+offset_top = -510.25
+offset_right = 341.25
+offset_bottom = 329.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="ColorRect/TextureRect/VBoxContainer" unique_id=1980965029]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8707599, 0.74575275, 0.41171768, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.34901962)
+theme_override_constants/shadow_outline_size = 22
+theme_override_font_sizes/font_size = 100
+text = "You Win!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Control" type="Control" parent="ColorRect/TextureRect/VBoxContainer" unique_id=1153962743]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScoreText" type="Label" parent="ColorRect/TextureRect/VBoxContainer" unique_id=604488586]
+layout_mode = 2
+text = "Вы победили за 23 хода и 2:15 времени!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="ColorRect/TextureRect/Button" to="." method="OnCloseButtonPressed"]

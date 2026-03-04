@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://dyaii3y0scwcq"]
+
+[ext_resource type="Theme" uid="uid://cbtmgppxr1xk0" path="res://my_theme.tres" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://balqoa0lgeqrf" path="res://MyButton.cs" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://5uef2natcy37" path="res://GameManager.cs" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://cn2yfskxjvs7f" path="res://img/bg1.jpg" id="3_272bh"]
+[ext_resource type="Texture2D" uid="uid://cf8afh5hbxpq7" path="res://img/puzzleAreaRect.png" id="5_5vw27"]
+[ext_resource type="PackedScene" uid="uid://kpnedx0rf7gy" path="res://NumberTile.tscn" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://cxiixmuotefyo" path="res://NumberTile.cs" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://m8572qwxyu7l" path="res://img/btn_reset_normal.png" id="8_4c57u"]
+[ext_resource type="PackedScene" uid="uid://cla0iwe6iqat8" path="res://modal_win.tscn" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://id3mb3t6j4n8" path="res://img/btn_reset_pressed.png" id="9_efxa6"]
+[ext_resource type="Texture2D" uid="uid://cdm08i1hhegix" path="res://img/header_logo.png" id="10_efxa6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dg77c"]
+texture = ExtResource("8_4c57u")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ycdy4"]
+texture = ExtResource("9_efxa6")
+
+[node name="Game" type="Control" unique_id=263614770 node_paths=PackedStringArray("PuzzlesArea", "NumberTile", "EmptyTile", "WinModal")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0xm2m")
+script = ExtResource("2_1bvp3")
+PuzzlesArea = NodePath("TextureRect/VBoxContainer/AspectRatioContainer/BgRect/MarginContainer/PuzzlesArea")
+NumberTile = NodePath("TextureRect/VBoxContainer/AspectRatioContainer/BgRect/MarginContainer/PuzzlesArea/NumberTile")
+EmptyTile = NodePath("TextureRect/VBoxContainer/AspectRatioContainer/BgRect/MarginContainer/PuzzlesArea/EmptyTile")
+WinModal = NodePath("ModalWin")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1359359333]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_272bh")
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=1602798317]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="TextureRect/VBoxContainer" unique_id=487322261 node_paths=PackedStringArray("TargetButton")]
+visible = false
+layout_mode = 2
+text = "btn2"
+script = ExtResource("1_ig7tw")
+TargetButton = NodePath(".")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="TextureRect/VBoxContainer" unique_id=537564843]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BgRect" type="TextureRect" parent="TextureRect/VBoxContainer/AspectRatioContainer" unique_id=978717229]
+layout_mode = 2
+texture = ExtResource("5_5vw27")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/VBoxContainer/AspectRatioContainer/BgRect" unique_id=1990251345]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1080.0
+theme_override_constants/margin_left = 73
+theme_override_constants/margin_top = 63
+theme_override_constants/margin_right = 65
+theme_override_constants/margin_bottom = 37
+
+[node name="PuzzlesArea" type="TextureRect" parent="TextureRect/VBoxContainer/AspectRatioContainer/BgRect/MarginContainer" unique_id=1543068494]
+layout_mode = 2
+
+[node name="NumberTile" parent="TextureRect/VBoxContainer/AspectRatioContainer/BgRect/MarginContainer/PuzzlesArea" unique_id=1423147860 instance=ExtResource("5_lquwl")]
+layout_mode = 1
+offset_left = 24.0
+offset_top = 21.0
+offset_right = -666.0
+offset_bottom = -692.0
+
+[node name="EmptyTile" type="ColorRect" parent="TextureRect/VBoxContainer/AspectRatioContainer/BgRect/MarginContainer/PuzzlesArea" unique_id=1515915681]
+visible = false
+layout_mode = 0
+offset_left = 351.0
+offset_top = 370.0
+offset_right = 577.0
+offset_bottom = 580.0
+color = Color(0.77254903, 0.77254903, 0.77254903, 0.2784314)
+script = ExtResource("6_7mycd")
+
+[node name="Button2" type="Button" parent="TextureRect/VBoxContainer" unique_id=339299637]
+visible = false
+layout_mode = 2
+text = "564654"
+
+[node name="Button" type="Button" parent="TextureRect" unique_id=490299280]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -165.0
+offset_top = -318.0
+offset_right = 172.0
+offset_bottom = -107.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_dg77c")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ycdy4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dg77c")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_dg77c")
+theme_override_styles/focus = SubResource("StyleBoxTexture_dg77c")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=1670778827]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -441.0
+offset_top = 139.0
+offset_right = 439.0
+offset_bottom = 316.0
+grow_horizontal = 2
+texture = ExtResource("10_efxa6")
+
+[node name="ModalWin" parent="." unique_id=825195000 instance=ExtResource("8_5vw27")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="TextureRect/VBoxContainer/Button" to="TextureRect/VBoxContainer/Button" method="OnButtonPressed"]
+[connection signal="pressed" from="TextureRect/Button" to="." method="OnClickReset"]
+[connection signal="CloseWinModal" from="ModalWin" to="." method="CloseWinModal"]
